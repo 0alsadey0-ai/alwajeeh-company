@@ -1,2 +1,211 @@
 # alwajeeh-company
 موقع  شركة الوجيه للتجارة العامة
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الوجيه للتجارة العامة | البصرة - العراق</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        
+        .logo { width: 120px; height: 120px; background: linear-gradient(45deg, #1e3a8a, #3b82f6); border-radius: 20px; position: relative; margin: 20px auto; box-shadow: 0 10px 30px rgba(30,58,138,0.4); }
+        .logo::before { content: 'الوجيه'; position: absolute; top: 25%; left: 50%; transform: translateX(-50%); color: #fbbf24; font-weight: 700; font-size: 18px; }
+        .logo::after { content: 'W'; position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%); color: white; font-size: 36px; font-weight: 900; }
+        
+        header { background: rgba(30,58,138,0.95); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav { background: rgba(59,130,246,0.95); padding: 1rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 600; transition: all 0.3s; padding: 0.5rem 1rem; border-radius: 25px; }
+        nav a:hover { background: rgba(251,191,36,0.3); transform: translateY(-2px); }
+        
+        .hero { background: linear-gradient(rgba(30,58,138,0.8), rgba(59,130,246,0.6)); padding: 150px 2rem 100px; text-align: center; color: white; }
+        .hours-alert { background: linear-gradient(90deg, #fbbf24, #f59e0b); color: #1e3a8a; padding: 1rem 2rem; border-radius: 50px; display: inline-block; font-weight: 600; margin: 1rem 0; box-shadow: 0 5px 15px rgba(251,191,36,0.4); }
+        
+        section { padding: 80px 2rem; max-width: 1200px; margin: auto; }
+        .container { max-width: 1000px; margin: auto; }
+        h2 { color: #1e3a8a; font-size: 2.5rem; margin-bottom: 2rem; text-align: center; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #fbbf24, #f59e0b); border-radius: 2px; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card i { font-size: 4rem; color: #3b82f6; margin-bottom: 1rem; }
+        
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .team-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+        .team-card:hover { transform: translateY(-10px); }
+        .team-card i { font-size: 3rem; color: #3b82f6; margin-bottom: 1rem; }
+        
+        #map { height: 400px; border-radius: 20px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 100%; }
+        form { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        input, textarea { width: 100%; padding: 1rem; margin: 1rem 0; border: 2px solid #e5e7eb; border-radius: 12px; font-family: inherit; transition: border 0.3s; }
+        input:focus, textarea:focus { outline: none; border-color: #3b82f6; }
+        button { background: linear-gradient(45deg, #3b82f6, #1e3a8a); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1.1rem; transition: transform 0.3s; }
+        button:hover { transform: scale(1.02); }
+        
+        .success-msg { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 12px; margin: 1rem 0; display: none; text-align: center; }
+        
+        .map-link { background: white; padding: 1rem; border-radius: 12px; text-align: center; margin: 1rem 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .map-link a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+        
+        footer { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; text-align: center; padding: 3rem 2rem 2rem; }
+        .social-links a { color: white; font-size: 1.5rem; margin: 0 1rem; transition: transform 0.3s; }
+        .social-links a:hover { transform: translateY(-5px) scale(1.2); color: #fbbf24; }
+        
+        @media (max-width: 768px) { .hero { padding: 120px 1rem 80px; } nav { flex-direction: column; gap: 1rem; } h2 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"></div>
+        <nav>
+            <a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#services"><i class="fas fa-shopping-cart"></i> خدماتنا</a>
+            <a href="#team"><i class="fas fa-users"></i> فريق الإدارة</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> اتصل بنا</a>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>شركة الوجيه للتجارة العامة</h1>
+            <div id="hours-alert" class="hours-alert">ساعات العمل: السبت إلى الخميس، 8:00 ص - 3:00 م | الجمعة: إجازة</div>
+            <p>شركة تجارية متنوعة موثوقة<br>مسجلة رسمياً لدى الجهات الحكومية العراقية<br><strong>مقرها البصرة - شارع الاستقلال</strong></p>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <h2>مجالات التجارة</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>تجارة السلع العامة</h3>
+                    <p>توريد وتوزيع المنتجات المتنوعة بأعلى جودة</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>استيراد وتصدير</h3>
+                    <p>شبكة تجارية واسعة محلياً ودولياً</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>شراكات تجارية</h3>
+                    <p>تعاملات جادة مع شركاء موثوقين</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="team">
+        <div class="container">
+            <h2>فريق الإدارة</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>محمد عبد الكريم</h3>
+                    <p>الرئيس التنفيذي</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>سجاد عبد الكريم</h3>
+                    <p>مدير التسويق</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>نور الدين هادي</h3>
+                    <p>مسؤول الاتصالات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>اتصل بنا</h2>
+            
+            <div class="map-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.app.goo.gl/HqXtZTTXf7p3NMBEA" target="_blank">📍 موقع الشركة على Google Maps</a>
+            </div>
+            
+            <div id="map" style="height: 300px; border-radius: 20px; margin: 1rem 0;"></div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 15px; margin: 1rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <p><i class="fas fa-map-marker-alt" style="color: #3b82f6;"></i> البصرة - شارع الاستقلال</p>
+                <p><i class="fas fa-envelope" style="color: #3b82f6;"></i> 0alsadey0@gmail.com</p>
+                <p><i class="fas fa-clock" style="color: #3b82f6;"></i> السبت-الخميس 8:00 ص - 3:00 م</p>
+            </div>
+            
+            <form id="contactForm">
+                <div class="success-msg" id="successMsg">✅ تم حفظ رسالتك! انسخها وأرسلها إلى 0alsadey0@gmail.com</div>
+                <input type="text" id="user_name" placeholder="اسمك *" required>
+                <input type="email" id="user_email" placeholder="بريدك الإلكتروني *" required>
+                <textarea id="message" placeholder="رسالتك *" rows="5" required></textarea>
+                <button type="submit"><i class="fas fa-paper-plane"></i> إرسال الاستفسار التجاري</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 شركة الوجيه للتجارة العامة | البصرة - شارع الاستقلال</p>
+            <p>شركة تجارية متنوعة موثوقة | جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        // فحص ساعات العمل (السبت=6 إلى الخميس=4)
+        function checkBusinessHours() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const isBusinessDay = day >= 0 && day <= 4 || day === 6;
+            const isBusinessHour = hour >= 8 && hour < 15;
+            
+            const alertEl = document.getElementById('hours-alert');
+            if (!isBusinessDay || !isBusinessHour) {
+                alertEl.innerHTML += '<br><strong style="color: #dc2626;">🏪 مغلق حالياً</strong>';
+            }
+        }
+        
+        // نموذج الاتصال الذكي
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('user_name').value;
+            const email = document.getElementById('user_email').value;
+            const message = document.getElementById('message').value;
+            
+            const fullMessage = `📧 استفسار تجاري جديد من موقع شركة الوجيه
+
+👤 الاسم: ${name}
+📧 البريد: ${email}
+💬 الرسالة:
+${message}
+
+🕒 تاريخ الإرسال: ${new Date().toLocaleString('ar-IQ')}`;
+            
+            navigator.clipboard.writeText(fullMessage).then(() => {
+                document.getElementById('successMsg').style.display = 'block';
+                this.reset();
+                setTimeout(() => {
+                    alert('✅ تم نسخ رسالتك التجارية!
+
+الصقها في 0alsadey0@gmail.com للحصول على رد سريع');
+                }, 500);
+            });
+        });
+        
+        checkBusinessHours();
+    </script>
+</body>
+</html>
